@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { BRAND } from '@/lib/data';
 
 const NAV_LINKS = [
   { label: 'Home', href: '/' },
@@ -84,7 +85,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="relative z-10 flex-shrink-0">
             <Image
-              src="https://static.wixstatic.com/media/161c90_073cc9f67ab24386afff675784717018~mv2.png"
+              src={BRAND.logoHeader}
               alt="ProEdge Events"
               width={160}
               height={45}
