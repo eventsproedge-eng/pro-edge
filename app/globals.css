@@ -1,0 +1,245 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════
+   ProEdge Design System — Global Styles
+   ═══════════════════════════════════════ */
+
+:root {
+  --brand-red: #ED1C24;
+  --brand-red-cta: #CF1E15;
+  --brand-red-dark: #4D1916;
+  --brand-red-mid: #9B312D;
+  --brand-red-light: #F09E9A;
+  --brand-black: #000000;
+  --brand-near-black: #1a1a1a;
+  --brand-grey: #595858;
+  --brand-light: #F2F2F2;
+  --brand-cream: #F5F0EA;
+}
+
+/* ── Base ── */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--brand-black);
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--brand-red);
+  color: #ffffff;
+}
+
+/* ── Typography Utilities ── */
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-measure {
+  max-inline-size: 55ch;
+}
+
+.text-measure-wide {
+  max-inline-size: 70ch;
+}
+
+/* ── Section spacing ── */
+.section-pad {
+  @apply py-20 md:py-28 lg:py-36;
+}
+
+.section-pad-sm {
+  @apply py-14 md:py-20 lg:py-24;
+}
+
+/* ── Container ── */
+.container-site {
+  @apply mx-auto w-full max-w-[1400px] px-5 md:px-8 lg:px-12;
+}
+
+/* ── Scroll reveal animation classes ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out, filter 0.8s ease-out;
+  filter: blur(4px);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ── Hero slideshow ── */
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.hero-slide.active {
+  opacity: 1;
+}
+
+.hero-slide .hero-bg {
+  transition: transform 8s ease-out;
+  transform: scale(1.05);
+}
+
+.hero-slide.active .hero-bg {
+  transform: scale(1);
+}
+
+/* ── Gradient overlays ── */
+.gradient-hero {
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.6) 40%,
+    rgba(0, 0, 0, 0.3) 70%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
+}
+
+.gradient-hero-bottom {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0) 60%
+  );
+}
+
+/* ── Card hover effects ── */
+.service-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card .card-image {
+  transition: transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1), filter 0.7s ease;
+}
+
+.service-card:hover .card-image {
+  transform: scale(1.08);
+  filter: brightness(0.4);
+}
+
+.service-card .card-overlay {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.service-card:hover .card-overlay {
+  opacity: 1;
+}
+
+/* ── Button styles ── */
+.btn-primary {
+  @apply relative inline-flex items-center gap-2 px-8 py-3.5 text-sm font-medium uppercase tracking-[0.15em];
+  background-color: var(--brand-red-cta);
+  color: #ffffff;
+  border: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.btn-primary:hover {
+  background-color: var(--brand-red);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(237, 28, 36, 0.3);
+}
+
+.btn-outline {
+  @apply relative inline-flex items-center gap-2 px-8 py-3.5 text-sm font-medium uppercase tracking-[0.15em];
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.btn-outline:hover {
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+/* ── Pill badge ── */
+.pill-badge {
+  @apply inline-block px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em];
+  background-color: var(--brand-red);
+  color: #ffffff;
+}
+
+/* ── Animated underline for links ── */
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--brand-red);
+  transition: width 0.3s ease;
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* ── Form styles ── */
+.form-input {
+  @apply w-full bg-transparent border-b border-white/20 py-3 text-white text-sm outline-none placeholder:text-white/40;
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+  border-color: var(--brand-red);
+}
+
+/* ── Scrollbar styling ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--brand-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--brand-red-dark);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-red);
+}
+
+/* ── Noise texture overlay ── */
+.noise-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
